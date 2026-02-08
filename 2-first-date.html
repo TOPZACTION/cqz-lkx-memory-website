@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一次约会 - 我们的回忆cqz&lkx</title>
+    <!-- 引入Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ==================== 通用样式 ==================== */
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+        }
+        
+        /* 导航菜单样式 */
+        .navbar-custom {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-menu {
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 页面内容样式 */
+        .page-container {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* ==================== 照片回忆页面样式 ==================== */
+        /* 照片卡片样式 */
+        .photo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .photo-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-card:hover .photo-img {
+            transform: scale(1.05);
+        }
+        
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .photo-container:hover .photo-overlay {
+            opacity: 1;
+        }
+        
+        .zoom-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: #ff6b8b;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .zoom-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .photo-info {
+            padding: 20px;
+        }
+        
+        .photo-info h5 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .photo-info .date-text {
+            font-size: 14px;
+            color: #ff6b8b;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .photo-info p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* 回忆文字框 */
+        .memory-text {
+            background: linear-gradient(135deg, #fff5f7 0%, #fff0f3 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border-left: 4px solid #ff6b8b;
+        }
+        
+        /* 返回首页按钮 */
+        .back-home {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .back-home a {
+            display: inline-flex;
+            align-items: center;
+            color: #ff6b8b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-home a:hover {
+            color: #ff8e53;
+            text-decoration: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .photo-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="1-home.html">💖 我们的故事</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="1-home.html">🏠 首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white active" href="#" id="photosDropdown" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📸 照片回忆
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="photosDropdown">
+                            <li><a class="dropdown-item active" href="2-first-date.html">第一次约会</a></li>
+                            <li><a class="dropdown-item" href="3-travel.html">一起旅行</a></li>
+                            <li><a class="dropdown-item" href="4-daily.html">日常甜蜜</a></li>
+                            <li><a class="dropdown-item" href="5-special.html">特别日子</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="videosDropdown" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🎥 视频记录
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="videosDropdown">
+                            <li><a class="dropdown-item" href="6-birthday-videos.html">生日惊喜</a></li>
+                            <li><a class="dropdown-item" href="7-travel-videos.html">旅行Vlog</a></li>
+                            <li><a class="dropdown-item" href="8-messages.html">想对你说</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="9-love-letter.html">💌 情书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="10-future.html">✨ 未来计划</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="page-container">
+        <div class="container">
+            <!-- 页面标题 -->
+            <div class="text-center mb-5">
+                <h1 class="section-title">第一次约会 💕</h1>
+                <p class="lead text-muted">还记得那天我们第一次单独见面，一切都那么美好...</p>
+                <p class="date-text"><i class="far fa-calendar me-2"></i>2023年10月15日</p>
+            </div>
+            
+            <!-- 照片画廊 -->
+            <div class="row">
+                <!-- 照片1 -->
+                <div class="col-lg-6">
+                    <div class="photo-card">
+                        <div class="photo-container">
+                            <img src="images/first-date/1.jpg" alt="第一次见面" class="photo-img">
+                            <div class="photo-overlay">
+                                <button class="zoom-btn" onclick="zoomPhoto(this)">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="photo-info">
+                            <h5>第一次见面</h5>
+                            <p class="date-text">2023.10.15 - 星巴克</p>
+                            <p>那天你穿着白色的连衣裙，笑容特别灿烂。我们聊了3个小时，时间过得真快。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 照片2 -->
+                <div class="col-lg-6">
+                    <div class="photo-card">
+                        <div class="photo-container">
+                            <img src="images/first-date/2.jpg" alt="漫步江边" class="photo-img">
+                            <div class="photo-overlay">
+                                <button class="zoom-btn" onclick="zoomPhoto(this)">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="photo-info">
+                            <h5>漫步江边</h5>
+                            <p class="date-text">2023.10.15 - 外滩</p>
+                            <p>傍晚我们一起去江边散步，微风轻轻吹过，你有点害羞的样子特别可爱。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 照片3 -->
+                <div class="col-md-4">
+                    <div class="photo-card">
+                        <div class="photo-container">
+                            <img src="images/first-date/3.jpg" alt="晚餐时刻" class="photo-img">
+                            <div class="photo-overlay">
+                                <button class="zoom-btn" onclick="zoomPhoto(this)">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="photo-info">
+                            <h5>晚餐时刻</h5>
+                            <p class="date-text">2023.10.15 - 意大利餐厅</p>
+                            <p>第一次一起吃饭，你点了意面，我点了牛排。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 照片4 -->
+                <div class="col-md-4">
+                    <div class="photo-card">
+                        <div class="photo-container">
+                            <img src="images/first-date/4.jpg" alt="送你回家" class="photo-img">
+                            <div class="photo-overlay">
+                                <button class="zoom-btn" onclick="zoomPhoto(this)">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="photo-info">
+                            <h5>送你回家</h5>
+                            <p class="date-text">2023.10.15 - 地铁站</p>
+                            <p>送你到地铁站，依依不舍地告别，期待下次见面。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 照片5 -->
+                <div class="col-md-4">
+                    <div class="photo-card">
+                        <div class="photo-container">
+                            <img src="images/first-date/5.jpg" alt="微信聊天" class="photo-img">
+                            <div class="photo-overlay">
+                                <button class="zoom-btn" onclick="zoomPhoto(this)">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="photo-info">
+                            <h5>微信聊天</h5>
+                            <p class="date-text">2023.10.15 - 晚上</p>
+                            <p>回家后我们继续微信聊天到深夜，有说不完的话。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回忆文字 -->
+            <div class="memory-text">
+                <h4><i class="fas fa-heart me-2"></i>第一次约会的感受</h4>
+                <p class="mb-0">
+                    那天的一切都那么完美。从见到你的第一眼起，我就知道我们会有一段特别的故事。
+                    你的笑容让我心跳加速，和你聊天让我感到无比愉快。虽然有些紧张，但更多的是期待和兴奋。
+                    谢谢你给了我这个美好的开始，让我们的故事有了这么温暖的开篇。
+                </p>
+            </div>
+            
+            <!-- 返回首页 -->
+            <div class="back-home">
+                <a href="1-home.html">
+                    <i class="fas fa-arrow-left me-2"></i>返回首页
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript功能 -->
+    <script>
+        // 照片放大功能
+        function zoomPhoto(button) {
+            const photoCard = button.closest('.photo-card');
+            const imgSrc = photoCard.querySelector('.photo-img').src;
+            const imgAlt = photoCard.querySelector('.photo-img').alt;
+            const title = photoCard.querySelector('h5').textContent;
+            const description = photoCard.querySelector('p:last-child').textContent;
+            
+            // 创建模态框
+            const modal = document.createElement('div');
+            modal.className = 'photo-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 90%; max-height: 90%;">
+                    <button class="modal-close" onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10000;">×</button>
+                    <img src="${imgSrc}" alt="${imgAlt}" style="max-width: 100%; max-height: 70vh; border-radius: 10px;">
+                    <div style="background: white; padding: 20px; border-radius: 0 0 10px 10px; margin-top: -5px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">${title}</h4>
+                        <p style="color: #666; margin-bottom: 0;">${description}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+            
+            document.addEventListener('keydown', function photoModalKeydown(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.removeEventListener('keydown', photoModalKeydown);
+                }
+            });
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.photo-modal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>

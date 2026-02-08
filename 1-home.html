@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 我们的回忆cqz&lkx</title>
+    <!-- 引入Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ==================== 通用样式 ==================== */
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+        }
+        
+        /* 导航菜单样式 */
+        .navbar-custom {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-menu {
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 页面内容样式 */
+        .page-container {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* ==================== 首页专属样式 ==================== */
+        /* 视频容器 */
+        .video-hero-container {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 20px;
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 视频封面样式 */
+        .video-poster {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-poster:hover {
+            transform: scale(1.02);
+        }
+
+        .video-poster:hover .play-button {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 139, 0.4);
+        }
+
+        .video-cover-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        /* 播放按钮样式 */
+        .play-button-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .click-to-play {
+            font-size: 18px;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+
+        /* 视频播放器样式 */
+        .video-player {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .main-video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            border-radius: 15px;
+            background: #000;
+        }
+
+        .close-video-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 100;
+        }
+
+        .close-video-btn:hover {
+            background: rgba(255, 107, 139, 0.8);
+        }
+
+        /* 首页欢迎区域 */
+        .welcome-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .welcome-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* 快速导航 */
+        .quick-nav {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .nav-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .video-hero-container {
+                min-height: 60vh;
+                padding: 20px 10px;
+                margin: 20px 0;
+            }
+            
+            .video-cover-img {
+                height: 350px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .click-to-play {
+                font-size: 16px;
+            }
+            
+            .welcome-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="1-home.html">💖 我们的故事</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" href="1-home.html">🏠 首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="photosDropdown" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📸 照片回忆
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="photosDropdown">
+                            <li><a class="dropdown-item" href="2-first-date.html">第一次约会</a></li>
+                            <li><a class="dropdown-item" href="3-travel.html">一起旅行</a></li>
+                            <li><a class="dropdown-item" href="4-daily.html">日常甜蜜</a></li>
+                            <li><a class="dropdown-item" href="5-special.html">特别日子</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="videosDropdown" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🎥 视频记录
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="videosDropdown">
+                            <li><a class="dropdown-item" href="6-birthday-videos.html">生日惊喜</a></li>
+                            <li><a class="dropdown-item" href="7-travel-videos.html">旅行Vlog</a></li>
+                            <li><a class="dropdown-item" href="8-messages.html">想对你说</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="9-love-letter.html">💌 情书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="10-future.html">✨ 未来计划</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="page-container">
+        <!-- 欢迎区域 -->
+        <div class="container">
+            <div class="welcome-section">
+                <h1 class="welcome-title">欢迎来到我们的回忆空间</h1>
+                <p class="welcome-subtitle">
+                    这里记录了我们在一起的点点滴滴，每一个笑容、每一次牵手、每一个拥抱，都是我们爱情故事中最珍贵的一页。
+                    这是只属于我们两个人的秘密基地，装满了我对你的爱和思念。
+                </p>
+                
+                <!-- 视频播放器 -->
+                <div class="video-hero-container">
+                    <div class="video-wrapper text-center">
+                        <div class="video-poster" id="videoPoster">
+                            <!-- 视频封面图 -->
+                            <img src="images/video-cover.jpg" alt="我们的视频封面" class="video-cover-img">
+                            <div class="play-button-overlay">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <p class="click-to-play">点击播放我们的故事</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 视频播放器（默认隐藏） -->
+                        <div class="video-player" id="videoPlayer" style="display: none;">
+                            <video id="mainVideo" controls class="main-video">
+                                <source src="videos/our-story.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                            <button class="close-video-btn" onclick="closeVideo()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 快速导航 -->
+                <div class="quick-nav">
+                    <h3 class="section-title">快速浏览我们的回忆</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="2-first-date.html" class="nav-card">
+                                <i class="fas fa-heart"></i>
+                                <h5>第一次约会</h5>
+                                <p>那个美好的开始</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="3-travel.html" class="nav-card">
+                                <i class="fas fa-plane"></i>
+                                <h5>一起旅行</h5>
+                                <p>看世界的足迹</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="09-love-letter.html" class="nav-card">
+                                <i class="fas fa-envelope"></i>
+                                <h5>写给她的情书</h5>
+                                <p>藏在心底的话</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="10-future.html" class="nav-card">
+                                <i class="fas fa-star"></i>
+                                <h5>未来计划</h5>
+                                <p>我们的明天</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript功能 -->
+    <script>
+        // 视频播放功能
+        const videoPoster = document.getElementById('videoPoster');
+        if (videoPoster) {
+            videoPoster.addEventListener('click', function() {
+                const videoPlayer = document.getElementById('videoPlayer');
+                const video = document.getElementById('mainVideo');
+                
+                // 显示视频播放器
+                videoPlayer.style.display = 'block';
+                // 隐藏封面
+                this.style.display = 'none';
+                
+                // 播放视频
+                video.play();
+                
+                // 添加键盘支持（按ESC关闭视频）
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        closeVideo();
+                    }
+                });
+            });
+        }
+
+        // 关闭视频
+        function closeVideo() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoPoster = document.getElementById('videoPoster');
+            const video = document.getElementById('mainVideo');
+            
+            // 暂停视频
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+            
+            // 显示封面，隐藏播放器
+            if (videoPoster) {
+                videoPoster.style.display = 'block';
+            }
+            if (videoPlayer) {
+                videoPlayer.style.display = 'none';
+            }
+        }
+        
+        // 监听视频结束，自动关闭播放器
+        const videoElement = document.getElementById('mainVideo');
+        if (videoElement) {
+            videoElement.addEventListener('ended', function() {
+                closeVideo();
+            });
+        }
+    </script>
+</body>
+</html>
