@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/"
+  to = "/1-home.html"
+  status = 200
