@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面标题 - 我们的回忆cqz&lkx</title>
+    <title>情书 - 我们的回忆cqz&lkx</title>
     <!-- 引入Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入Font Awesome图标 -->
@@ -210,6 +210,56 @@
                 height: 200px;
             }
         }
+
+        /* ==================== 情书卡片样式 ==================== */
+        .letter-card {
+            background: #fff9f7;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 107, 139, 0.1);
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid #ffb6c1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .letter-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 107, 139, 0.2);
+        }
+        .letter-card h2 {
+            color: #ff6b8b;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .letter-card h2 i {
+            font-size: 1.6rem;
+            color: #ff8a9f;
+        }
+        .letter-meta {
+            color: #ff99aa;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #ffccd5;
+        }
+        .letter-card .preview {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+            text-indent: 0;
+        }
+
+        /* 模态框内正文样式 */
+        #modalContent p {
+            text-indent: 2em;
+            margin-bottom: 1.2rem;
+        }
+        
     </style>
 </head>
 <body>
@@ -249,7 +299,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="9-love-letter.html">💌 情书</a>
+                        <a class="nav-link text-white active" href="9-love-letter.html">💌 情书</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="10-future.html">✨ 未来计划</a>
@@ -262,43 +312,33 @@
     <!-- 页面内容 -->
     <div class="page-container">
         <div class="container">
-            <!-- 页面标题区 -->
+            <!-- 页面标题区（改为情书主题） -->
             <div class="text-center mb-5">
-                <h1 class="section-title">页面标题</h1>
-                <p class="lead text-muted">这里是页面的副标题或简短描述...</p>
+                <h1 class="section-title">💌 给你的情书</h1>
+                <p class="lead text-muted">每一封都是藏在心底的温柔，写给你，也写给我们的故事。</p>
             </div>
             
-            <!-- ==================== 页面内容从这里开始 ==================== -->
-            
-            <div class="content-card">
-                <h3><i class="fas fa-heart me-2"></i>第一部分标题</h3>
-                <p>这里是页面内容。你可以添加文字、图片、视频等。</p>
-                <p>这个卡片可以用于展示不同的内容模块。</p>
+            <!-- ==================== 情书列表 ==================== -->
+            <div class="row" id="letter-list">
+                <!-- 卡片会由 JavaScript 动态生成 -->
             </div>
-            
-            <!-- 示例：照片展示 -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
+
+            <!-- 情书阅读模态框 -->
+            <div class="modal fade" id="letterModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content" style="border-radius: 20px; border: none;">
+                        <div class="modal-header" style="border-bottom: 1px dashed #ffccd5; background: #fff9f7;">
+                            <h5 class="modal-title" id="modalTitle" style="color: #ff6b8b; font-weight: 600;">标题</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
+                        <div class="modal-body" style="background: #fff9f7; max-height: 60vh; overflow-y: auto;">
+                            <div class="letter-meta" id="modalDate" style="margin-bottom: 1rem;"></div>
+                            <div id="modalContent" style="font-size: 1.1rem; line-height: 1.8; color: #4a4a4a;"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
-                        </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
+                        <div class="modal-footer" style="border-top: 1px dashed #ffccd5; background: #fff9f7; justify-content: space-between;">
+                            <button type="button" class="btn btn-outline-secondary" id="prevLetterBtn" style="border-color: #ffb6c1; color: #ff6b8b;">&larr; 上一封</button>
+                            <span id="letterCounter" style="color: #ff99aa;">1 / 3</span>
+                            <button type="button" class="btn btn-outline-secondary" id="nextLetterBtn" style="border-color: #ffb6c1; color: #ff6b8b;">下一封 &rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -318,10 +358,8 @@
     <!-- 引入Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- 照片放大功能（可选，如果页面有照片需要这个功能） -->
+    <!-- 照片放大功能（保留，供其他页面使用） -->
     <script>
-        // 照片放大功能
-        // 照片放大功能（兼容普通卡片和轮播图卡片）
         function zoomPhoto(button) {
             const photoCard = button.closest('.photo-card');
             let img, title, description;
@@ -340,7 +378,6 @@
             const imgSrc = img.src;
             const imgAlt = img.alt;
 
-            // 创建模态框
             const modal = document.createElement('div');
             modal.className = 'photo-modal';
             modal.style.cssText = `
@@ -374,7 +411,6 @@
             document.body.appendChild(modal);
             setTimeout(() => { modal.style.opacity = '1'; }, 10);
 
-            // 按 ESC 关闭
             document.addEventListener('keydown', function photoModalKeydown(e) {
                 if (e.key === 'Escape') {
                     closeModal();
@@ -382,7 +418,6 @@
                 }
             });
 
-            // 点击背景关闭
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     closeModal();
@@ -399,6 +434,108 @@
                 }, 300);
             }
         }
+    </script>
+
+    <!-- 情书模块的 JavaScript -->
+    <script>
+        // 情书数据
+        const letters = [
+            {
+                title: "第一封：初见",
+                date: "2023.10.15 · 晴",
+                preview: "还记得第一次见你的那个下午，阳光透过咖啡馆的落地窗，在你侧脸上勾勒出温柔的轮廓...",
+                content: `
+                    <p>还记得第一次见你的那个下午，阳光透过咖啡馆的落地窗，在你侧脸上勾勒出温柔的轮廓。你低头翻着菜单，偶尔抬头对我浅浅一笑，那一刻我就知道，这个午后会和以往所有日子都不一样。</p>
+                    <p>后来我们聊了很多，从喜欢的书到童年的趣事，从对未来的幻想到藏在心底的小秘密。时间像被偷走了一样，不知不觉窗外已经亮起了路灯。送你到地铁站时，你转身挥手的背影，成了我那天最舍不得的画面。</p>
+                    <p>现在每次路过那家咖啡馆，我都会想起你坐在对面的样子。亲爱的，遇见你是我此生最美的意外。</p>
+                `
+            },
+            {
+                title: "第二封：与你同行",
+                date: "2023.11.20 · 海边",
+                preview: "那天傍晚我们一起去海边散步，你赤着脚走在沙滩上，海浪一次次轻轻没过你的脚踝...",
+                content: `
+                    <p>那天傍晚我们一起去海边散步，你赤着脚走在沙滩上，海浪一次次轻轻没过你的脚踝。你笑着回头看我，夕阳在你身后铺开一片橘色。我突然觉得，只要能这样一直看着你的笑容，生活就足够美好。</p>
+                    <p>我们捡了好多贝壳，你挑了几个最漂亮的装进口袋，说要带回家放在书桌上。我悄悄多捡了一个最完整的，后来悄悄放在你的包里——不知道你发现了吗？</p>
+                    <p>和你在一起的每一天，平凡都变得闪闪发光。未来的路还很长，但我已经迫不及待想和你一起去更多地方，看更多风景。</p>
+                `
+            },
+            {
+                title: "第三封：晚安，我的爱",
+                date: "2023.12.05 · 深夜",
+                preview: "夜深了，窗外的灯火一盏盏熄灭。我躺在床上，想象着你此刻也许已经进入梦乡...",
+                content: `
+                    <p>夜深了，窗外的灯火一盏盏熄灭。我躺在床上，想象着你此刻也许已经进入梦乡。不知道你的梦里有没有我？如果有，希望你梦到的是我们一起笑、一起闹的场景。</p>
+                    <p>白天你发来的照片还保存在手机里，我翻来覆去看了好几遍。你嘟着嘴假装生气的样子，真让人想捏捏你的脸。真想现在就告诉你，你是我每天睁开眼睛第一个想到的人，也是我闭上眼睛前最后想念的人。</p>
+                    <p>晚安，我的宝贝。愿你今夜好眠，明天又是甜蜜的一天。</p>
+                `
+            }
+        ];
+
+        // 当前显示的情书索引
+        let currentLetterIndex = 0;
+
+        // 渲染卡片列表
+        function renderCards() {
+            const container = document.getElementById('letter-list');
+            container.innerHTML = '';
+            letters.forEach((letter, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-6';  // 每行两列，可改为 col-12 让每行一个
+                col.innerHTML = `
+                    <div class="letter-card" onclick="openLetter(${index})">
+                        <h2><i class="fas fa-heart"></i> ${letter.title}</h2>
+                        <div class="letter-meta"><i class="far fa-calendar-alt me-1"></i> ${letter.date}</div>
+                        <p class="preview">${letter.preview}</p>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // 打开模态框并显示指定索引的情书
+        window.openLetter = function(index) {
+            currentLetterIndex = index;
+            updateModalContent();
+            const modal = new bootstrap.Modal(document.getElementById('letterModal'));
+            modal.show();
+        };
+
+        // 更新模态框内容
+        function updateModalContent() {
+            const letter = letters[currentLetterIndex];
+            document.getElementById('modalTitle').innerText = letter.title;
+            document.getElementById('modalDate').innerHTML = `<i class="far fa-calendar-alt me-1"></i> ${letter.date}`;
+            document.getElementById('modalContent').innerHTML = letter.content;
+            document.getElementById('letterCounter').innerText = `${currentLetterIndex + 1} / ${letters.length}`;
+        }
+
+        // 上一封
+        function prevLetter() {
+            if (currentLetterIndex > 0) {
+                currentLetterIndex--;
+                updateModalContent();
+            } else {
+                alert('已经是第一封了');
+            }
+        }
+
+        // 下一封
+        function nextLetter() {
+            if (currentLetterIndex < letters.length - 1) {
+                currentLetterIndex++;
+                updateModalContent();
+            } else {
+                alert('已经是最后一封了');
+            }
+        }
+
+        // 绑定按钮事件（确保 DOM 加载完成后执行）
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCards();
+            document.getElementById('prevLetterBtn').addEventListener('click', prevLetter);
+            document.getElementById('nextLetterBtn').addEventListener('click', nextLetter);
+        });
     </script>
 </body>
 </html>
