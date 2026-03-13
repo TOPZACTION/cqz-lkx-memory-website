@@ -206,10 +206,15 @@
 
         /* 轮播图下方文字说明（覆盖在图片上） */
         .carousel-caption {
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);  /* 半透明黑底 */
             border-radius: 8px;
             padding: 5px 10px;
             bottom: 15px;
+            /* 让背景框宽度自适应文字内容 */
+            width: fit-content;               /* 根据内容自动调整宽度 */
+            left: 50%;                        /* 水平居中 */
+            transform: translateX(-50%);       /* 居中偏移修正 */
+            white-space: nowrap;               /* 强制文字不换行（可选） */
         }
         .carousel-caption h6, .carousel-caption p {
             margin: 0;
@@ -284,9 +289,9 @@
                     <div class="accordion-header" id="heading1">
                         <!-- 点击卡片触发展开/折叠 -->
                         <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                            <div class="photo-container" style="height: 200px;">
+                            <div class="photo-container" style="height: 600px;">
                                 <!-- 类别封面图片，请替换为你自己的图片 -->
-                                <img src="images/daily/campus-cover.jpg" alt="校园时光" class="photo-img" style="object-fit: cover;">
+                                <img src="images/4/校内生活4.jpg" alt="校园时光" class="photo-img" style="object-fit: cover;">
                             </div>
                             <div class="p-4">
                                 <h5><i class="fas fa-university me-2"></i>校园时光</h5>
@@ -310,13 +315,12 @@
                                                 </div>
                                                 <!-- 图片上显示的文字 -->
                                                 <div class="carousel-caption d-block">
-                                                    <h6>图书馆自习</h6>
-                                                    <p>2021.10.15</p>
+                                                    <h6>排练投喂</h6>
                                                 </div>
                                                 <!-- 隐藏的详细描述（供放大弹窗使用） -->
                                                 <div class="photo-info d-none">
-                                                    <h5>图书馆自习</h5>
-                                                    <p>那天我们一起在图书馆复习，你认真做题的样子真好看。窗外阳光洒在你脸上，我偷偷看了好久。</p>
+                                                    <h5>排练投喂</h5>
+                                                    <p>那天是歌手大赛决赛排练的时间，在会议中心忙的我没时间吃饭，还是小宝宝点好外卖送过来并且陪我一起吃的午饭。</p>
                                                 </div>
                                             </div>
                                             <!-- 第二张图片 -->
@@ -326,12 +330,11 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>操场散步</h6>
-                                                    <p>2021.11.03</p>
+                                                    <h6>通宵后的能量补充</h6>
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>操场散步</h5>
-                                                    <p>傍晚一起在操场散步，聊了很多未来的事。晚风很温柔，你的手也很温暖。</p>
+                                                    <h5>通宵后的能量补充</h5>
+                                                    <p>前一天的歌手大赛彩排任务过于繁重，一宿没睡的我饥肠辘辘，小宝宝陪我去绿地的富川小笼一起吃饭为我补充能量。</p>
                                                 </div>
                                             </div>
                                             <!-- 第三张图片 -->
@@ -341,12 +344,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>食堂午餐</h6>
-                                                    <p>2021.12.08</p>
+                                                    <h6>全家冰激凌</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>食堂午餐</h5>
-                                                    <p>你非要尝我碗里的红烧肉，然后笑得像只小猫。那天的米饭格外香。</p>
+                                                    <h5>全家冰激凌</h5>
+                                                    <p>在全家的冰激凌机坏之前，我和宝宝特别喜欢吃现打的甜筒。个大好吃两个人还有优惠，正好适合我和小宝宝。</p>
                                                 </div>
                                             </div>
                                             <!-- 第四张图片 -->
@@ -356,12 +359,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>食堂午餐</h6>
-                                                    <p>2021.12.08</p>
+                                                    <h6>联赛生活</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>食堂午餐</h5>
-                                                    <p>你非要尝我碗里的红烧肉，然后笑得像只小猫。那天的米饭格外香。</p>
+                                                    <h5>联赛生活</h5>
+                                                    <p>在报国杯联赛举办之后，宝宝经常来到场边为我和我们队加油助威。当喜欢的人在场边看的时候我总是动力十足，可惜后来宝宝总是错过我表现好或者赢球的场次，也是有些遗憾了。</p>
                                                 </div>
                                             </div>
                                             <!-- <div class="carousel-item">
@@ -384,12 +387,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>食堂午餐</h6>
-                                                    <p>2021.12.08</p>
+                                                    <h6>校队比赛</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>食堂午餐</h5>
-                                                    <p>你非要尝我碗里的红烧肉，然后笑得像只小猫。那天的米饭格外香。</p>
+                                                    <h5>校队比赛</h5>
+                                                    <p>后来宝宝直接加入了校队任职，每次出去比赛都有小宝宝陪我，在场上飞奔有宝宝的助威，下场休息后有宝宝照顾，我就是球场上最幸福的家伙。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -398,12 +401,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>食堂午餐</h6>
-                                                    <p>2021.12.08</p>
+                                                    <h6>小宝宝的球场作品</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>食堂午餐</h5>
-                                                    <p>你非要尝我碗里的红烧肉，然后笑得像只小猫。那天的米饭格外香。</p>
+                                                    <h5>小宝宝的球场作品</h5>
+                                                    <p>宝宝经常为比赛拍照，也为我校内的联赛生涯留下了一些十分珍贵的影像资料，有宝宝在我生活中真是十分幸福的事情。</p>
                                                 </div>
                                             </div>
                                             <!-- 你可以继续添加更多图片，复制上面的结构并修改即可 -->
@@ -428,12 +431,12 @@
                 <div class="accordion-item mb-4" style="border: none; background: transparent;">
                     <div class="accordion-header" id="heading2">
                         <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                            <div class="photo-container" style="height: 200px;">
-                                <img src="images/daily/weekend-cover.jpg" alt="校外约会" class="photo-img" style="object-fit: cover;">
+                            <div class="photo-container" style="height: 600px;">
+                                <img src="images/4/校外约会1.jpg" alt="校外约会" class="photo-img" style="object-fit: cover;">
                             </div>
                             <div class="p-4">
                                 <h5><i class="fas fa-coffee me-2"></i>校外约会</h5>
-                                <p class="text-muted mb-0">点击展开查看照片（共10张）</p>
+                                <p class="text-muted mb-0">点击展开查看照片（共11张）</p>
                             </div>
                         </div>
                     </div>
@@ -449,12 +452,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>公园野餐</h6>
-                                                    <p>2022.04.10</p>
+                                                    <h6>第一次开房</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>公园野餐</h5>
-                                                    <p>阳光正好，我们在草地上铺了垫子，你带了自制三明治，我带了水果。你躺着晒太阳的样子特别可爱。</p>
+                                                    <h5>第一次开房</h5>
+                                                    <p>和小宝宝在一起后我们便迫不及待地开房约会了，还一起干了羞羞的事情。每次这样的经历都令人充满幸福感和获得感，喜欢和宝宝做任何亲密的事情。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -463,12 +466,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>酸奶罐罐</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>酸奶罐罐</h5>
+                                                    <p>和宝宝一起去美罗城逛街的时候发现了酸奶罐罐，第一次喝的时候真的惊艳到我了，之后也和宝宝尝试了他们家的很多饮品，非常的美味！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -477,12 +480,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>观演后事</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>观演后事</h5>
+                                                    <p>这次正值放假结束，我和小宝宝许久未见，一起看了SNH48的演出后住在了附近的白玉兰酒店。酒店环境很高级，我们也尽情发泄了对彼此的思念和喜爱之情。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -491,12 +494,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>lalaport有高达</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>lalaport有高达</h5>
+                                                    <p>一次在lalaport的约会，吃饱喝足的我们走到门口正好遇到巨大高达的表演，忍不住驻足观看，还是非常帅气的！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -505,12 +508,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>大悦城摩天轮</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>大悦城摩天轮</h5>
+                                                    <p>从我们在一起前开始，大悦城就是我们最常去的约会地点（仅次于学校附近的商场），我和宝宝也一起体验了楼顶的摩天轮，只不过对于风景我们并不关心，只顾着亲亲抱抱了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -519,12 +522,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>KKV</h6>
+                                                   
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>KKV</h5>
+                                                    <p>在第一次被宝宝带着逛过之后，KKV也加入了我们逛街的NPC任务地点，和miniso、好特卖差不多。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -533,12 +536,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>环球港</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>环球港</h5>
+                                                    <p>环球港虽然离学校较远，但仍然和宝宝一起去过好几次。金碧辉煌的装饰风格下确实各种各样亲民的店铺，我们在这里第一次吃了寿喜烧，也在这里吃了好几次美味的陶欣记砂锅海鲜粥，全是充满美味的回忆。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -547,12 +550,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>DQ联名Chiikawa</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>DQ联名Chiikawa</h5>
+                                                    <p>考研结束后我拉着宝宝来吃DQ，还不是因为和Chiikawa联名了，结果主要的周边已经送完了，于是只能悻悻收下三小只的打卡相框离开。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -561,12 +564,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>世纪汇偶遇杰克爱</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>世纪汇偶遇杰克爱</h5>
+                                                    <p>再一次世纪汇的约会中我们偶遇了Jackeylove正在参与麻辣王子的官方活动，宝宝饿的肚子痛痛也愿意陪我看哥哥两眼，夸夸小宝宝但以后不会再因为这种事让宝宝不舒服啦。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -575,12 +578,26 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>久违的外滩</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>久违的外滩</h5>
+                                                    <p>这一次我和宝宝看公演，结束后宝宝还想看下一场，于是我便跑去北外滩绿地玩，在等待小宝宝从嘉兴路赶来吃饭的时候拍下了这张外滩的照片。</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="images/4/校外约会11.jpg" class="carousel-img" alt="周末2">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>好特卖</h6>
+                                                    
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>好特卖</h5>
+                                                    <p>逛街的另一个NPC任务就是去好特卖狠狠买零食饮料酒水，每次我都和小宝宝买一大袋子回宿舍吃，虽然宝宝不爱吃零食但在宿舍我们还是吃的非常开心。</p>
                                                 </div>
                                             </div>
                                             <!-- 继续添加其他图片... -->
@@ -604,8 +621,8 @@
                 <div class="accordion-item mb-4" style="border: none; background: transparent;">
                     <div class="accordion-header" id="heading3">
                         <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                            <div class="photo-container" style="height: 200px;">
-                                <img src="images/daily/weekend-cover.jpg" alt="一起吃过的美食" class="photo-img" style="object-fit: cover;">
+                            <div class="photo-container" style="height: 600px;">
+                                <img src="images/4/美食4.jpg" alt="一起吃过的美食" class="photo-img" style="object-fit: cover;">
                             </div>
                             <div class="p-4">
                                 <h5><i class="fas fa-coffee me-2"></i>一起吃过的美食</h5>
@@ -625,26 +642,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>公园野餐</h6>
-                                                    <p>2022.04.10</p>
+                                                    <h6>富川小食堂</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>公园野餐</h5>
-                                                    <p>阳光正好，我们在草地上铺了垫子，你带了自制三明治，我带了水果。你躺着晒太阳的样子特别可爱。</p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="images/4/美食2.jpg" class="carousel-img" alt="周末2">
-                                                <div class="carousel-overlay">
-                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
-                                                </div>
-                                                <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
-                                                </div>
-                                                <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>富川小食堂</h5>
+                                                    <p>学校附近的富川小食堂专做家常下饭菜，晚饭不知道吃什么的时候我就会和宝宝一起去吃一顿丰富多样又十分美味、经济实惠的饱饱晚餐，随后再手拉手散步回学校。这样一起生活的美好点滴总是让人幸福感暴增。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -653,12 +656,26 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>人民的西餐厅-萨莉亚</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>人民的西餐厅-萨莉亚</h5>
+                                                    <p>再来上海之前我知道的连锁西餐只有必胜客，但当宝宝带我吃了萨莉亚之后我就再也没有看过必胜客一眼。种类丰富又经济实惠，想吃西餐时的不二之选。在这里还发生了著名的“曼大哥事件”，令人忍俊不禁。</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="images/4/美食2.jpg" class="carousel-img" alt="周末2">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>鱼酷！</h6>
+                                                    
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>鱼酷！</h5>
+                                                    <p>在郑州就多次品尝过鱼酷的我带宝宝一起吃了好多次鱼酷，宝宝本来就爱吃鱼这家还做的很好吃，我还充了会员后来和宝宝吃了很多次，还有经典的“大四喜套餐”。（虽然套餐下架后不久球队也解散了）</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -667,12 +684,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>先起半步颠</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>先起半步颠</h5>
+                                                    <p>半步颠是我吃过最好吃的川菜馆，量大实惠又美味，每次和宝宝去吃都要狠狠炫饭，还要配上啤酒喝才过瘾。不过后来不知道什么原因经营情况逐渐下滑，最终也是无奈闭店搬走。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -681,12 +698,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>点都德</h6>
+                                                   
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>点都德</h5>
+                                                    <p>说到粤菜和点心我的全部了解基本都来自于点都德，宝宝也很喜欢吃尤其是其中的明火白粥配香香橄榄菜，我则是很喜欢喝茶配虾饺皇、红米肠等小点心吃。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -695,12 +712,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>点都德</h6>
+                                                   
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>点都德</h5>
+                                                    <p>说到粤菜和点心我的全部了解基本都来自于点都德，宝宝也很喜欢吃尤其是其中的明火白粥配香香橄榄菜，我则是很喜欢喝茶配虾饺皇、红米肠等小点心吃。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -709,12 +726,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>绿茶餐厅</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>绿茶餐厅</h5>
+                                                    <p>作为杭帮菜的（应该是）连锁餐厅，绿茶虽然算不上最好吃的，但他一定是最经济实惠的。菜品种类也十分丰富，就是他们的西湖牛肉羹实在是令人难以理解。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -723,12 +740,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>蜀山有牛</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>蜀山有牛</h5>
+                                                    <p>蜀山有牛可以说是我和小宝宝逛街发现的又一个宝藏店铺了，他更加经济实惠，但却十分的美味，从翘脚牛肉到红烧肉，再到筷子牛肉鸭血，每一个菜品都十分的美味。但可惜后来也是因为经营原因关门，恐怕短时间内只能回忆了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -737,12 +754,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>寿喜烧</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>寿喜烧</h5>
+                                                    <p>要说和宝宝在一起后最经常吃的当然是寿喜烧自助，两个人经常在有钱的时候饿一整天然后去狠狠炫一堆寿喜烧，最后撑到扶墙出。说来已经很久没吃过了，之后有机会还要和宝宝一起吃！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -751,12 +768,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>DQ</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>DQ</h5>
+                                                    <p>在校吃kfc，出校门吃DQ。作为我们俩都很认可的冰激凌店，DQ也经常成为我们出门约会的冰激凌选择。只不过宝宝喜欢各种种类和口味的，而我这个不懂行的一般就吃暴风雪和好几层的甜筒。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -765,12 +782,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>呷哺呷哺</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>呷哺呷哺</h5>
+                                                    <p>在了解到复地活力城这个商场之后，我也第一次在宝宝带领下吃了呷哺呷哺小火锅。之后几乎每次没钱还想吃火锅的时候就和宝宝来吃，虽然算不上美味但经济实惠还能吃的饱饱的，评价为顶级。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -779,12 +796,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>美味日料</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>美味日料</h5>
+                                                    <p>和宝宝在一起之前我一直觉得吃日料太腻了，但每次和宝宝一起吃的日料都非常美味，看样子选店的眼光非常重要。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -793,12 +810,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>三文鱼</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>三文鱼</h5>
+                                                    <p>作为日料中宝宝最喜欢吃的单品之一，三文鱼基本上是每次必点。但生的我确实有点顶不住，还是喜欢吃炙烤后的。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -807,12 +824,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>香香拉面</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>香香拉面</h5>
+                                                    <p>小宝宝发现在孙桥那边有一家很不错的日料店，于是之后也光顾了几次。他们家的烧鸟和拉面非常不错，唯一的缺点是寿司比较少且价格并不是太实惠。还有一次在吃完打车的时候突然想上厕所，让宝宝先招呼司机的有趣经历。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -821,12 +838,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>滨寿司</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>滨寿司</h5>
+                                                    <p>以前半步颠的位置开了滨寿司，反而让我和宝宝光顾的次数更多了。亲民的价格，回转寿司的新奇体验，以及丰富的种类，在之后几乎成了我们的日料首选。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -835,12 +852,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>陶欣记</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>陶欣记</h5>
+                                                    <p>当当当当！环球港的巨星陶欣记砂锅海鲜粥闪亮登场！这个可以说是我和宝宝都非常喜欢的店铺了，炒过的各种海鲜加入粥底之中，鲜香美味，而且价格还十分公道，直接给到夯爆了！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -849,12 +866,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>陶欣记</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>陶欣记</h5>
+                                                    <p>看看这个粥的成色，鲜味都要透过屏幕渗出来了。不管了，依旧夯爆了！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -863,12 +880,26 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>赵记甜品</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>赵记甜品</h5>
+                                                    <p>在小宝宝带我尝试甜品之前我一直以为是那种甜到发齁的甜点，真正尝试后真想狠狠抽自己巴掌！太美味了！不仅有小甜水还有咖喱鱼蛋车仔面吃，简直是极品搭配。以后我也要加入宝宝的甜品品鉴行列了！</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="images/4/美食19.jpg" class="carousel-img" alt="周末2">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>东盛</h6>
+                                                    
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>东盛</h5>
+                                                    <p>放在这个位置纯属是我刚找到烤肉的图片。自助餐里扛把子，和寿喜烧掰手腕的东盛自助烤肉，其实最棒的一点还是宝宝夸我烤的肉好吃嘿嘿，所以我愿意给小宝宝烤一辈子的烤肉！</p>
                                                 </div>
                                             </div>
                                             <!-- 继续添加其他图片... -->
@@ -892,8 +923,8 @@
                 <div class="accordion-item mb-4" style="border: none; background: transparent;">
                     <div class="accordion-header" id="heading4">
                         <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                            <div class="photo-container" style="height: 200px;">
-                                <img src="images/daily/weekend-cover.jpg" alt="演出" class="photo-img" style="object-fit: cover;">
+                            <div class="photo-container" style="height: 600px;">
+                                <img src="images/4/演出1.jpg" alt="演出" class="photo-img" style="object-fit: cover;">
                             </div>
                             <div class="p-4">
                                 <h5><i class="fas fa-coffee me-2"></i>演出活动</h5>
@@ -913,12 +944,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>公园野餐</h6>
-                                                    <p>2022.04.10</p>
+                                                    <h6>上海体育场</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>公园野餐</h5>
-                                                    <p>阳光正好，我们在草地上铺了垫子，你带了自制三明治，我带了水果。你躺着晒太阳的样子特别可爱。</p>
+                                                    <h5>上海体育场</h5>
+                                                    <p>这是小宝宝第一次陪我现场看比赛，上海体育场的宏伟和帅气让我深深震撼，河南队的客场表现也让人十分惊喜。有小宝宝陪我看比赛感觉幸福档次又上升了！</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -927,12 +958,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>星梦剧院</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>星梦剧院</h5>
+                                                    <p>在小宝宝安利我颜沁之后便多次随宝宝造访星梦剧院，这张拍摄于我的第一次公演之旅----苏珊珊生日公演。曾经N队的辉煌还历历在目，不过不论团里成员发展如何，我和小宝宝在嘉兴路的回忆都会永远存在。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -941,12 +972,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>黄龙体育场</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>黄龙体育场</h5>
+                                                    <p>第一次看国字号的比赛就是和宝宝一起在杭州看的亚运会，氛围超级好，也深刻领教到了小宝宝灵敏的洞察力，每次举起相机就能录到进球时间，以后真得多和宝宝一起看比赛了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -955,12 +986,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>浦东足球场</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>浦东足球场</h5>
+                                                    <p>我的评价是不如上海体育场一根。二层看台很高还很陡，面前的玻璃护栏还挡视野，更令人气愤的是当天徐嘉敏的表现还十分灾难，总归不是一个很好的回忆，评价为拉完了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -969,12 +1000,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>颜沁！</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>颜沁！</h5>
+                                                    <p>寒假过年前的最后一场公演，没想到成了我来嘉兴路的的最后一次。这次我买到了颜沁的写真，但是不久之后就受到了颜沁的退团消息。不管怎样还是要感谢小宝宝给我安利颜沁，带给我的欢乐和幸福。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -983,12 +1014,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>应许之地</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>应许之地</h5>
+                                                    <p>承载我美好记忆的最好看的公演，可惜再也看不到曾经的成员跳这套公演了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -997,12 +1028,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>66生日公演</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>66生日公演</h5>
+                                                    <p>在我看过的公演中66的这场生公无疑是最出色最好看的一场。不仅节目编排十分用心，66本人也是那么可爱，并且还让我看到了很多想看的北芭的成员。祝愿66和可爱的小宝宝以及我都能够更加幸福美满。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1011,12 +1042,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>春天落樱，猫出现的街道</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>春天落樱，猫出现的街道</h5>
+                                                    <p>66生日公演展牌，和小宝宝都在前面打了卡，也算是和66一起留下了难忘的回忆。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1025,12 +1056,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>上海大剧院</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>上海大剧院</h5>
+                                                    <p>在上海大剧院和宝宝一起看了歌剧魅影的原版巡演。只能说没有现场看过歌剧的我还是低估了这项伟大艺术的感染力，再加上一部直击灵魂的经典名著，直接当场把我震撼的无以言表。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1039,12 +1070,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>歌剧魅影</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>歌剧魅影</h5>
+                                                    <p>歌剧魅影票根留念。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1053,12 +1084,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>歌剧魅影</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>歌剧魅影</h5>
+                                                    <p>歌剧历史上的伟大作品。致敬！</p>
                                                 </div>
                                             </div>
                                             <!-- 继续添加其他图片... -->
@@ -1082,8 +1113,8 @@
                 <div class="accordion-item mb-4" style="border: none; background: transparent;">
                     <div class="accordion-header" id="heading5">
                         <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                            <div class="photo-container" style="height: 200px;">
-                                <img src="images/daily/weekend-cover.jpg" alt="礼物合集" class="photo-img" style="object-fit: cover;">
+                            <div class="photo-container" style="height: 600px;">
+                                <img src="images/4/礼物1.jpg" alt="礼物合集" class="photo-img" style="object-fit: cover;">
                             </div>
                             <div class="p-4">
                                 <h5><i class="fas fa-coffee me-2"></i>礼物合集</h5>
@@ -1103,12 +1134,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>公园野餐</h6>
-                                                    <p>2022.04.10</p>
+                                                    <h6>圣诞小饼干</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>公园野餐</h5>
-                                                    <p>阳光正好，我们在草地上铺了垫子，你带了自制三明治，我带了水果。你躺着晒太阳的样子特别可爱。</p>
+                                                    <h5>圣诞小饼干</h5>
+                                                    <p>圣诞节之际，小宝宝活动之余专门为我挑选的可爱小饼干礼物！我一直珍藏着完全舍不得吃呜呜呜太喜欢了。</p>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1117,12 +1148,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>小宝宝买给我的Chiikawa</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>小宝宝买给我的Chiikawa</h5>
+                                                    <p>小宝宝知道我特别喜欢Chiikawa，出去玩的时候遇到了扭蛋和周边也专门拍照给我为我拿下送给我，最喜欢小宝宝啦！</p>、、
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -1131,12 +1162,12 @@
                                                     <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
                                                 </div>
                                                 <div class="carousel-caption d-block">
-                                                    <h6>电影院</h6>
-                                                    <p>2022.05.21</p>
+                                                    <h6>珍贵的手作围巾</h6>
+                                                    
                                                 </div>
                                                 <div class="photo-info d-none">
-                                                    <h5>电影院</h5>
-                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                    <h5>珍贵的手作围巾</h5>
+                                                    <p>小宝宝竟然亲手为我织了围巾！又好看又暖和，并且我能感受到其中深深的爱意。感谢小宝宝亲手为我做的情谊满满的礼物，我也会努力用充满心意的礼物让宝宝开心的！</p>
                                                 </div>
                                             </div>
                                            
