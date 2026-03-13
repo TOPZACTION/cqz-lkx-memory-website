@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面标题 - 我们的回忆cqz&lkx</title>
+    <title>未来计划 - 我们的回忆cqz&lkx</title>
     <!-- 引入Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入Font Awesome图标 -->
@@ -74,146 +74,120 @@
             text-decoration: none;
         }
         
-        /* 通用卡片样式 */
-        .content-card {
+        /* ==================== 计划表样式 ==================== */
+        .plan-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            padding: 25px;
             margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(255, 107, 139, 0.1);
+            border: 2px solid #ffe2e6;
             transition: transform 0.3s ease;
         }
-        
-        .content-card:hover {
+        .plan-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 107, 139, 0.2);
+        }
+        .plan-card h3 {
+            color: #ff6b8b;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #ffccd5;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .plan-card h3 i {
+            font-size: 2rem;
+            color: #ff8a9f;
         }
         
-        /* 照片卡片样式（如果页面需要照片） */
-        .photo-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            height: 100%;
-            margin-bottom: 30px;
+        /* 计划项列表 */
+        .plan-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .plan-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #ffe6ea;
+        }
+        .plan-item:last-child {
+            border-bottom: none;
         }
         
-        .photo-container {
+        /* 自定义复选框（心形） */
+        .plan-check {
             position: relative;
-            height: 250px;
-            overflow: hidden;
+            width: 28px;
+            height: 28px;
+            margin-right: 15px;
+            cursor: pointer;
         }
-        
-
-        /* ========== 轮播图完美自适应（高度固定，宽度按比例，绝不拉伸）========== */
-        .photo-container .carousel-inner {
-            height: 250px;               /* 固定高度，你可以按需调整 */
-            border-radius: 12px;
-            overflow: hidden;           /* 裁剪超出部分 */
-        }
-
-        .photo-container .carousel-item {
-            height: 100%;
-            background-color: #fff;     /* 留白时显示黑色背景，更高级 */
-        }
-
-        /* 轮播图图片样式 —— 使用自定义类，避开 Bootstrap 干扰 */
-        .photo-container .carousel-item .carousel-img {
-            height: 100%;              /* 高度填满容器 */
-            width: auto;              /* 宽度自动缩放，保持比例 */
-            max-width: none;          /* 允许宽度超过容器（用于裁剪） */
-            margin: 0 auto;          /* 水平居中（针对宽度小于容器的竖图） */
-            display: block;          /* 块级元素配合 margin auto 居中 */
-        }
-
-        /* 如果你希望「完整显示整张图，不裁剪」，请改用下面这组样式（取消注释即可）
-        .photo-container .carousel-item .carousel-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #000;
-        }
-        */
-
-        /* 放大镜按钮位置与样式 */
-        .photo-container .carousel-overlay {
+        .plan-check input {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            z-index: 10;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
         }
-
-        .photo-container .carousel-overlay .zoom-btn {
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #ffe2e6;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
+            color: #ff6b8b;
+            font-size: 16px;
         }
-
-        .photo-container .carousel-overlay .zoom-btn:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: scale(1.1);
+        .plan-check:hover input ~ .checkmark {
+            background-color: #ffccd5;
         }
-
-
-
-
-                /* ========== 轮播图箭头优化：更明显 ========== */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 44px;              /* 按钮宽度 */
-            height: 44px;            /* 按钮高度 */
-            background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
-            border-radius: 50%;      /* 圆形按钮 */
-            top: 50%;                /* 垂直居中 */
-            transform: translateY(-50%);
-            margin: 0 15px;          /* 左右间距 */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 轻微阴影，更立体 */
-            opacity: 1;              /* 完全不透明 */
-            transition: all 0.2s ease;
+        .plan-check input:checked ~ .checkmark {
+            background-color: #ff6b8b;
+            color: white;
         }
-
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background: white;       /* 悬停时纯白背景 */
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-            transform: translateY(-50%) scale(1.05); /* 悬停稍微放大 */
+        .checkmark:after {
+            content: "❤️";  /* 未选中时显示空心爱心 */
         }
-
-        /* 箭头图标改成深灰色，更显眼 */
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(0.6) brightness(0.4);  /* 将白色箭头转为深灰 */
-            width: 22px;
-            height: 22px;
-        }
-
-
-
-        .photo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .plan-check input:checked ~ .checkmark:after {
+            content: "❤️";  /* 选中时也可以显示实心爱心，但背景已变 */
         }
         
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .photo-container {
-                height: 200px;
-            }
+        /* 计划文字 */
+        .plan-text {
+            flex: 1;
+            font-size: 1.2rem;
+            color: #555;
+            transition: all 0.2s;
+        }
+        .plan-text .date {
+            font-size: 0.9rem;
+            color: #ff99aa;
+            margin-left: 10px;
+        }
+        .plan-item.completed .plan-text {
+            color: #aaa;
+            text-decoration: line-through;
+        }
+        
+        /* 已完成项的爱心标记（可选） */
+        .plan-item.completed .checkmark {
+            background-color: #ffb6c1;
         }
     </style>
 </head>
 <body>
-    <!-- 导航菜单 -->
+    <!-- 导航菜单（高亮未来计划） -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand text-white fw-bold" href="1-home.html">💖 我们的故事</a>
@@ -252,7 +226,7 @@
                         <a class="nav-link text-white" href="9-love-letter.html">💌 情书</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="10-future.html">✨ 未来计划</a>
+                        <a class="nav-link text-white active" href="10-future.html">✨ 未来计划</a>
                     </li>
                 </ul>
             </div>
@@ -264,47 +238,133 @@
         <div class="container">
             <!-- 页面标题区 -->
             <div class="text-center mb-5">
-                <h1 class="section-title">页面标题</h1>
-                <p class="lead text-muted">这里是页面的副标题或简短描述...</p>
+                <h1 class="section-title">✨ 未来计划</h1>
+                <p class="lead text-muted">把我们的梦想和计划一个一个写下来，然后一起实现它们吧</p>
             </div>
             
-            <!-- ==================== 页面内容从这里开始 ==================== -->
+            <!-- ==================== 计划列表 ==================== -->
             
-            <div class="content-card">
-                <h3><i class="fas fa-heart me-2"></i>第一部分标题</h3>
-                <p>这里是页面内容。你可以添加文字、图片、视频等。</p>
-                <p>这个卡片可以用于展示不同的内容模块。</p>
+            <!-- 旅行计划卡片 -->
+            <div class="plan-card">
+                <h3><i class="fas fa-plane"></i> 一起去旅行</h3>
+                <ul class="plan-list" id="travel-plans">
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">去日本看樱花，看烟花大会 </span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">陪宝宝去云南，看苍山洱海，稻城亚丁 </span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">去广西看海，看桂林山水 </span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">去欧洲，一起看五大联赛 </span>
+                    </li>
+                </ul>
             </div>
             
-            <!-- 示例：照片展示 -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
-                        </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
-                        </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- 生活目标卡片 -->
+            <div class="plan-card">
+                <h3><i class="fas fa-home"></i> 我们的家</h3>
+                <ul class="plan-list" id="home-plans">
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">拥有属于我们的小窝</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">养一只可爱小猫</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">每天做饭给宝宝吃</span>
+                    </li>
+                </ul>
             </div>
             
-            <!-- ==================== 页面内容到这里结束 ==================== -->
+            <!-- 成长计划卡片 -->
+            <div class="plan-card">
+                <h3><i class="fas fa-graduation-cap"></i> 一起幸福</h3>
+                <ul class="plan-list" id="growth-plans">
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">一起去滑雪</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">一起吃更多好吃的</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">一起存钱去做更多有趣的事情</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- 生活目标卡片 -->
+            <div class="plan-card">
+                <h3><i class="fas fa-home"></i> 一直在一起</h3>
+                <ul class="plan-list" id="home-plans">
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">一起过生日</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">一起庆祝每个纪念日和节日</span>
+                    </li>
+                    <li class="plan-item">
+                        <label class="plan-check">
+                            <input type="checkbox" onchange="toggleComplete(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="plan-text">和宝宝结婚，永远永远在一起</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- 你可以继续添加更多卡片，复制上面的结构即可 -->
+            
+            <!-- ==================== 页面内容结束 ==================== -->
             
             <!-- 返回首页 -->
             <div class="back-home">
@@ -318,87 +378,25 @@
     <!-- 引入Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- 照片放大功能（可选，如果页面有照片需要这个功能） -->
+    <!-- 处理勾选状态：添加/移除completed类 -->
     <script>
-        // 照片放大功能
-        // 照片放大功能（兼容普通卡片和轮播图卡片）
-        function zoomPhoto(button) {
-            const photoCard = button.closest('.photo-card');
-            let img, title, description;
-
-            if (photoCard.querySelector('.carousel-item')) {
-                const activeItem = photoCard.querySelector('.carousel-item.active');
-                img = activeItem.querySelector('img');
-                title = photoCard.querySelector('h5').innerText;
-                description = photoCard.querySelector('p:last-child').innerText;
+        function toggleComplete(checkbox) {
+            const planItem = checkbox.closest('.plan-item');
+            if (checkbox.checked) {
+                planItem.classList.add('completed');
             } else {
-                img = photoCard.querySelector('.photo-img');
-                title = photoCard.querySelector('h5').innerText;
-                description = photoCard.querySelector('p:last-child').innerText;
-            }
-
-            const imgSrc = img.src;
-            const imgAlt = img.alt;
-
-            // 创建模态框
-            const modal = document.createElement('div');
-            modal.className = 'photo-modal';
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 9999;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-
-            modal.innerHTML = `
-                <div class="modal-content" style="max-width: 90%; max-height: 90%; display: flex; flex-direction: column; align-items: center; background: transparent; border: none;">
-                    <button class="modal-close" onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10000;">×</button>
-                    <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 10px 10px 0 0; width: 100%;">
-                        <img src="${imgSrc}" alt="${imgAlt}" style="max-width: 100%; max-height: 70vh; width: auto; height: auto; object-fit: contain; border-radius: 10px 10px 0 0;">
-                    </div>
-                    <div style="background: white; padding: 20px; border-radius: 0 0 10px 10px; width: 100%;">
-                        <h4 style="color: #333; margin-bottom: 10px;">${title}</h4>
-                        <p style="color: #666; margin-bottom: 0;">${description}</p>
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(modal);
-            setTimeout(() => { modal.style.opacity = '1'; }, 10);
-
-            // 按 ESC 关闭
-            document.addEventListener('keydown', function photoModalKeydown(e) {
-                if (e.key === 'Escape') {
-                    closeModal();
-                    document.removeEventListener('keydown', photoModalKeydown);
-                }
-            });
-
-            // 点击背景关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-        }
-
-        function closeModal() {
-            const modal = document.querySelector('.photo-modal');
-            if (modal) {
-                modal.style.opacity = '0';
-                setTimeout(() => {
-                    modal.remove();
-                }, 300);
+                planItem.classList.remove('completed');
             }
         }
+        
+        // 可选：页面加载时根据已勾选状态初始化（如果有默认勾选的计划）
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.plan-check input').forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkbox.closest('.plan-item').classList.add('completed');
+                }
+            });
+        });
     </script>
 </body>
 </html>
