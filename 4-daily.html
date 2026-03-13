@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面标题 - 我们的回忆cqz&lkx</title>
+    <title>日常甜蜜 - 我们的回忆cqz&lkx</title>
     <!-- 引入Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入Font Awesome图标 -->
@@ -88,7 +88,7 @@
             transform: translateY(-5px);
         }
         
-        /* 照片卡片样式（如果页面需要照片） */
+        /* 照片卡片样式 */
         .photo-card {
             background: white;
             border-radius: 15px;
@@ -104,38 +104,27 @@
             overflow: hidden;
         }
         
-
-        /* ========== 轮播图完美自适应（高度固定，宽度按比例，绝不拉伸）========== */
+        /* 轮播图完美自适应 */
         .photo-container .carousel-inner {
-            height: 250px;               /* 固定高度，你可以按需调整 */
+            height: 250px;
             border-radius: 12px;
-            overflow: hidden;           /* 裁剪超出部分 */
+            overflow: hidden;
         }
 
         .photo-container .carousel-item {
             height: 100%;
-            background-color: #fff;     /* 留白时显示黑色背景，更高级 */
+            background-color: #fff;
         }
 
-        /* 轮播图图片样式 —— 使用自定义类，避开 Bootstrap 干扰 */
         .photo-container .carousel-item .carousel-img {
-            height: 100%;              /* 高度填满容器 */
-            width: auto;              /* 宽度自动缩放，保持比例 */
-            max-width: none;          /* 允许宽度超过容器（用于裁剪） */
-            margin: 0 auto;          /* 水平居中（针对宽度小于容器的竖图） */
-            display: block;          /* 块级元素配合 margin auto 居中 */
-        }
-
-        /* 如果你希望「完整显示整张图，不裁剪」，请改用下面这组样式（取消注释即可）
-        .photo-container .carousel-item .carousel-img {
-            width: 100%;
             height: 100%;
-            object-fit: contain;
-            background-color: #000;
+            width: auto;
+            max-width: none;
+            margin: 0 auto;
+            display: block;
         }
-        */
 
-        /* 放大镜按钮位置与样式 */
+        /* 放大镜按钮 */
         .photo-container .carousel-overlay {
             position: absolute;
             top: 16px;
@@ -163,40 +152,34 @@
             transform: scale(1.1);
         }
 
-
-
-
-                /* ========== 轮播图箭头优化：更明显 ========== */
+        /* 轮播图箭头优化 */
         .carousel-control-prev,
         .carousel-control-next {
-            width: 44px;              /* 按钮宽度 */
-            height: 44px;            /* 按钮高度 */
-            background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
-            border-radius: 50%;      /* 圆形按钮 */
-            top: 50%;                /* 垂直居中 */
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            top: 50%;
             transform: translateY(-50%);
-            margin: 0 15px;          /* 左右间距 */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 轻微阴影，更立体 */
-            opacity: 1;              /* 完全不透明 */
+            margin: 0 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            opacity: 1;
             transition: all 0.2s ease;
         }
 
         .carousel-control-prev:hover,
         .carousel-control-next:hover {
-            background: white;       /* 悬停时纯白背景 */
+            background: white;
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-            transform: translateY(-50%) scale(1.05); /* 悬停稍微放大 */
+            transform: translateY(-50%) scale(1.05);
         }
 
-        /* 箭头图标改成深灰色，更显眼 */
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            filter: invert(0.6) brightness(0.4);  /* 将白色箭头转为深灰 */
+            filter: invert(0.6) brightness(0.4);
             width: 22px;
             height: 22px;
         }
-
-
 
         .photo-img {
             width: 100%;
@@ -204,11 +187,34 @@
             object-fit: cover;
         }
         
-        /* 响应式设计 */
+        /* 响应式 */
         @media (max-width: 768px) {
             .photo-container {
                 height: 200px;
             }
+        }
+
+        /* 日常甜蜜卡片点击区域 */
+        .category-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255,107,139,0.2);
+        }
+
+        /* 轮播图下方文字说明（覆盖在图片上） */
+        .carousel-caption {
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            padding: 5px 10px;
+            bottom: 15px;
+        }
+        .carousel-caption h6, .carousel-caption p {
+            margin: 0;
+            color: white;
+            text-shadow: 1px 1px 2px black;
         }
     </style>
 </head>
@@ -233,7 +239,7 @@
                         <ul class="dropdown-menu" aria-labelledby="photosDropdown">
                             <li><a class="dropdown-item" href="2-first-date.html">第一次约会</a></li>
                             <li><a class="dropdown-item" href="3-travel.html">一起旅行</a></li>
-                            <li><a class="dropdown-item" href="4-daily.html">日常甜蜜</a></li>
+                            <li><a class="dropdown-item active" href="4-daily.html">日常甜蜜</a></li>
                             <li><a class="dropdown-item" href="5-special.html">特别日子</a></li>
                         </ul>
                     </li>
@@ -264,46 +270,172 @@
         <div class="container">
             <!-- 页面标题区 -->
             <div class="text-center mb-5">
-                <h1 class="section-title">页面标题</h1>
-                <p class="lead text-muted">这里是页面的副标题或简短描述...</p>
+                <h1 class="section-title">🍬 日常甜蜜</h1>
+                <p class="lead text-muted">点击卡片，展开属于我们的每一个平凡却闪着光的日子</p>
             </div>
             
-            <!-- ==================== 页面内容从这里开始 ==================== -->
+            <!-- ==================== 日常甜蜜模块 ==================== -->
             
-            <div class="content-card">
-                <h3><i class="fas fa-heart me-2"></i>第一部分标题</h3>
-                <p>这里是页面内容。你可以添加文字、图片、视频等。</p>
-                <p>这个卡片可以用于展示不同的内容模块。</p>
-            </div>
-            
-            <!-- 示例：照片展示 -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
+            <!-- 使用Bootstrap手风琴组件，点击卡片展开轮播 -->
+            <div class="accordion" id="dailyAccordion">
+                
+                <!-- ========== 类别1：校园时光 ========== -->
+                <div class="accordion-item mb-4" style="border: none; background: transparent;">
+                    <div class="accordion-header" id="heading1">
+                        <!-- 点击卡片触发展开/折叠 -->
+                        <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                            <div class="photo-container" style="height: 200px;">
+                                <!-- 类别封面图片，请替换为你自己的图片 -->
+                                <img src="images/daily/campus-cover.jpg" alt="校园时光" class="photo-img" style="object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h5><i class="fas fa-university me-2"></i>校园时光</h5>
+                                <p class="text-muted mb-0">点击展开查看照片（共8张）</p>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
+                    </div>
+                    <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#dailyAccordion">
+                        <div class="accordion-body p-0 pt-3">
+                            <!-- 轮播图卡片 -->
+                            <div class="photo-card">
+                                <div class="photo-container">
+                                    <!-- 轮播ID必须唯一，这里用 carouselDaily1 -->
+                                    <div id="carouselDaily1" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <!-- 第一张图片（active） -->
+                                            <div class="carousel-item active">
+                                                <img src="images/daily/campus1.jpg" class="carousel-img" alt="校园1">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <!-- 图片上显示的文字 -->
+                                                <div class="carousel-caption d-block">
+                                                    <h6>图书馆自习</h6>
+                                                    <p>2021.10.15</p>
+                                                </div>
+                                                <!-- 隐藏的详细描述（供放大弹窗使用） -->
+                                                <div class="photo-info d-none">
+                                                    <h5>图书馆自习</h5>
+                                                    <p>那天我们一起在图书馆复习，你认真做题的样子真好看。窗外阳光洒在你脸上，我偷偷看了好久。</p>
+                                                </div>
+                                            </div>
+                                            <!-- 第二张图片 -->
+                                            <div class="carousel-item">
+                                                <img src="images/daily/campus2.jpg" class="carousel-img" alt="校园2">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>操场散步</h6>
+                                                    <p>2021.11.03</p>
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>操场散步</h5>
+                                                    <p>傍晚一起在操场散步，聊了很多未来的事。晚风很温柔，你的手也很温暖。</p>
+                                                </div>
+                                            </div>
+                                            <!-- 第三张图片 -->
+                                            <div class="carousel-item">
+                                                <img src="images/daily/campus3.jpg" class="carousel-img" alt="校园3">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>食堂午餐</h6>
+                                                    <p>2021.12.08</p>
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>食堂午餐</h5>
+                                                    <p>你非要尝我碗里的红烧肉，然后笑得像只小猫。那天的米饭格外香。</p>
+                                                </div>
+                                            </div>
+                                            <!-- 你可以继续添加更多图片，复制上面的结构并修改即可 -->
+                                        </div>
+                                        <!-- 左右箭头 -->
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDaily1" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">上一张</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDaily1" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">下一张</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="photo-card">
-                        <div class="photo-container">
-                            <img src="images/placeholder.jpg" alt="示例图片" class="photo-img">
+
+                <!-- ========== 类别2：周末时光 ========== -->
+                <div class="accordion-item mb-4" style="border: none; background: transparent;">
+                    <div class="accordion-header" id="heading2">
+                        <div class="photo-card category-card" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            <div class="photo-container" style="height: 200px;">
+                                <img src="images/daily/weekend-cover.jpg" alt="周末时光" class="photo-img" style="object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h5><i class="fas fa-coffee me-2"></i>周末时光</h5>
+                                <p class="text-muted mb-0">点击展开查看照片（共5张）</p>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <h5>示例标题</h5>
-                            <p class="text-muted mb-2">日期/地点</p>
-                            <p>这里是图片的描述文字。</p>
+                    </div>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#dailyAccordion">
+                        <div class="accordion-body p-0 pt-3">
+                            <div class="photo-card">
+                                <div class="photo-container">
+                                    <div id="carouselDaily2" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="images/daily/weekend1.jpg" class="carousel-img" alt="周末1">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>公园野餐</h6>
+                                                    <p>2022.04.10</p>
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>公园野餐</h5>
+                                                    <p>阳光正好，我们在草地上铺了垫子，你带了自制三明治，我带了水果。你躺着晒太阳的样子特别可爱。</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="images/daily/weekend2.jpg" class="carousel-img" alt="周末2">
+                                                <div class="carousel-overlay">
+                                                    <button class="zoom-btn" onclick="dailyZoomPhoto(this)"><i class="fas fa-search-plus"></i></button>
+                                                </div>
+                                                <div class="carousel-caption d-block">
+                                                    <h6>电影院</h6>
+                                                    <p>2022.05.21</p>
+                                                </div>
+                                                <div class="photo-info d-none">
+                                                    <h5>电影院</h5>
+                                                    <p>一起看了《瞬息全宇宙》，你靠在我肩膀上，偶尔小声讨论剧情。散场后你还在模仿石头。</p>
+                                                </div>
+                                            </div>
+                                            <!-- 继续添加其他图片... -->
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDaily2" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">上一张</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDaily2" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">下一张</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- 你可以继续添加更多类别，复制上面的结构并修改ID、图片路径和文字即可 -->
+                <!-- 注意每个轮播的ID必须唯一，如 carouselDaily3, carouselDaily4 ... -->
+                
             </div>
-            
+
             <!-- ==================== 页面内容到这里结束 ==================== -->
             
             <!-- 返回首页 -->
@@ -318,29 +450,30 @@
     <!-- 引入Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- 照片放大功能（可选，如果页面有照片需要这个功能） -->
+    <!-- 日常甜蜜专用放大功能（不影响其他页面的zoomPhoto） -->
     <script>
-        // 照片放大功能
-        // 照片放大功能（兼容普通卡片和轮播图卡片）
-        function zoomPhoto(button) {
-            const photoCard = button.closest('.photo-card');
-            let img, title, description;
+        function dailyZoomPhoto(button) {
+            // 找到当前图片所在的 carousel-item
+            const carouselItem = button.closest('.carousel-item');
+            if (!carouselItem) return;
 
-            if (photoCard.querySelector('.carousel-item')) {
-                const activeItem = photoCard.querySelector('.carousel-item.active');
-                img = activeItem.querySelector('img');
-                title = photoCard.querySelector('h5').innerText;
-                description = photoCard.querySelector('p:last-child').innerText;
-            } else {
-                img = photoCard.querySelector('.photo-img');
-                title = photoCard.querySelector('h5').innerText;
-                description = photoCard.querySelector('p:last-child').innerText;
+            // 获取图片
+            const img = carouselItem.querySelector('img');
+            if (!img) return;
+
+            // 获取隐藏的标题和描述
+            const photoInfo = carouselItem.querySelector('.photo-info');
+            let title = '';
+            let description = '';
+            if (photoInfo) {
+                title = photoInfo.querySelector('h5')?.innerText || '';
+                description = photoInfo.querySelector('p')?.innerText || '';
             }
 
             const imgSrc = img.src;
             const imgAlt = img.alt;
 
-            // 创建模态框
+            // 创建放大模态框（样式与之前一致）
             const modal = document.createElement('div');
             modal.className = 'photo-modal';
             modal.style.cssText = `
@@ -360,7 +493,7 @@
 
             modal.innerHTML = `
                 <div class="modal-content" style="max-width: 90%; max-height: 90%; display: flex; flex-direction: column; align-items: center; background: transparent; border: none;">
-                    <button class="modal-close" onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10000;">×</button>
+                    <button class="modal-close" onclick="this.closest('.photo-modal').remove()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10000;">×</button>
                     <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 10px 10px 0 0; width: 100%;">
                         <img src="${imgSrc}" alt="${imgAlt}" style="max-width: 100%; max-height: 70vh; width: auto; height: auto; object-fit: contain; border-radius: 10px 10px 0 0;">
                     </div>
@@ -377,7 +510,7 @@
             // 按 ESC 关闭
             document.addEventListener('keydown', function photoModalKeydown(e) {
                 if (e.key === 'Escape') {
-                    closeModal();
+                    modal.remove();
                     document.removeEventListener('keydown', photoModalKeydown);
                 }
             });
@@ -385,19 +518,9 @@
             // 点击背景关闭
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
-                    closeModal();
+                    modal.remove();
                 }
             });
-        }
-
-        function closeModal() {
-            const modal = document.querySelector('.photo-modal');
-            if (modal) {
-                modal.style.opacity = '0';
-                setTimeout(() => {
-                    modal.remove();
-                }, 300);
-            }
         }
     </script>
 </body>
